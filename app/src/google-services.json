@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "1037197885094",
+    "project_id": "nedge-e4007",
+    "storage_bucket": "nedge-e4007.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1037197885094:android:659937e4b70d811212be67",
+        "android_client_info": {
+          "package_name": "com.app.nEdge"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1037197885094-3h163jbj7obein6gqi8et6camg1d02gd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.app.nEdge",
+            "certificate_hash": "711e33df293c5c600aaa92e4979bfbb4d3662b58"
+          }
+        },
+        {
+          "client_id": "1037197885094-ui4kerro1offcv09rhbnvmgcvre50aeo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDaAF0M6wm0dYPQG7oD5FE1i_QAg-2vrlw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1037197885094-ui4kerro1offcv09rhbnvmgcvre50aeo.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1037197885094-4avsjndfkphh85evv02jv9jqkalnknej.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.app.nEdge"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
