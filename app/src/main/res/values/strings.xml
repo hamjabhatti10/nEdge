@@ -50,4 +50,17 @@
     <string name="camera_permission_msg">Please enable camera permission from Settings.</string>
     <string name="gallery_permission_msg">Please enable gallery permission from Settings.</string>
     <string name="permission_denied">Permission Denied</string>
+    <string name="login">Login</string>
+    <string name="phone_email">Phone/Email</string>
+    <string name="firstname">firstName</string>
+    <string name="lastname">lastName</string>
+    <string name="email">email</string>
+    <string name="signup">signUp</string>
+    <string name="require_field">require_field</string>
+    <string name="password">Password</string>
+    <string name="registration">Registration</string>
+    <string name="a_learner">A Learner</string>
+    <string name="an_expert">An Expert</string>
+    <string name="name">Name</string>
+
 </resources>
