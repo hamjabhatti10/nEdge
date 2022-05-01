@@ -62,5 +62,12 @@
     <string name="a_learner">A Learner</string>
     <string name="an_expert">An Expert</string>
     <string name="name">Name</string>
+    <string name="leaner_name">Leaner Name</string>
+    <string name="learner_level">Learner Level</string>
+    <string name="school_college">School/College</string>
+    <string name="university">University</string>
+    <string name="css_professional">CSS/Professional</string>
+    <string name="expert_levels">Expert Levels</string>
+    <string name="expert_name">Expert Name</string>
 
 </resources>

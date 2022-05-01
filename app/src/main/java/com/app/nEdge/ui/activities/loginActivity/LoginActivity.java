@@ -21,7 +21,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class LoginActivity extends AppCompatActivity {
      EditText editTextEmailPhone,editTextPassword;
-     Button buttonLogin;
+     Button buttonLogin,buttonSignUp;
      FirebaseAuth firebaseAuth;
 
     @Override
@@ -34,6 +34,10 @@ public class LoginActivity extends AppCompatActivity {
 
     private void setListeners() {
         buttonLogin.setOnClickListener(view -> validation());
+        buttonSignUp.setOnClickListener(view -> {
+            Intent intent= new Intent(LoginActivity.this,RegistrationActivity.class);
+            startActivity(intent);
+        });
     }
 
     private void validation() {
@@ -71,6 +75,7 @@ public class LoginActivity extends AppCompatActivity {
         editTextEmailPhone=findViewById(R.id.editTextEmailPhone);
         editTextPassword=findViewById(R.id.editTextPassword);
         buttonLogin=findViewById(R.id.buttonLogin);
+        buttonSignUp=findViewById(R.id.buttonSignUp);
         firebaseAuth= FirebaseAuth.getInstance();
     }
 }

@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="@dimen/_15dp"
     android:orientation="vertical"
     tools:context=".ui.activities.RegistrationActivtiy.RegistrationActivity">
-
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 <TextView
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -56,11 +60,98 @@
     </RadioGroup>
 
 
+    //LearnerDesign
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:id="@+id/leanerDesign"
+        android:orientation="vertical">
+
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/editTextLeanerName"
+            android:hint="@string/leaner_name"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewLearnerLevel"
+            android:text="@string/learner_level"
+            android:gravity="center"
+            android:textSize="25sp"/>
+
+    <Button
+        android:layout_width="@dimen/_150dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/buttonSchoolCollege"
+        android:text="@string/school_college"/>
+    <Button
+        android:layout_width="@dimen/_150dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/buttonUniversity"
+        android:text="@string/university"/>
+    <Button
+        android:layout_width="@dimen/_150dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/buttonCssProfessional"
+        android:text="@string/css_professional"/>
+
+    </LinearLayout>
+
+    //ExpertDesign
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:id="@+id/expertDesign"
+        android:orientation="vertical">
+
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/editTextExpertName"
+        android:hint="@string/expert_name"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textViewExpertLevel"
+        android:text="@string/expert_levels"
+        android:gravity="center"
+        android:textSize="25sp"/>
+
+    <Button
+        android:layout_width="@dimen/_150dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/buttonExpertSchoolCollege"
+        android:text="@string/school_college"/>
+    <Button
+        android:layout_width="@dimen/_150dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/buttonExpertUniversity"
+        android:text="@string/university"/>
+    <Button
+        android:layout_width="@dimen/_150dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/buttonExpertCssProfessional"
+        android:text="@string/css_professional"/>
+
+    </LinearLayout>
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:background="@color/color_black"
+        android:textColor="@color/color_white"
         android:id="@+id/buttonSignUp"
         android:hint="@string/signup"/>
 
+
 </LinearLayout>
+</ScrollView>

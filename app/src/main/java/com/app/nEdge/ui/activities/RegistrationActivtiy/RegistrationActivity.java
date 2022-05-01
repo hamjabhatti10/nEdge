@@ -2,12 +2,12 @@ package com.app.nEdge.ui.activities.RegistrationActivtiy;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -25,11 +25,16 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class RegistrationActivity extends AppCompatActivity {
-    TextView textViewRegistration;
-    EditText editTextName,editTextEmail,editTextPassword;
-    Button buttonSignUp;
+    TextView textViewRegistration,textViewLearnerLevel,textViewExpertLevel;
+    EditText editTextName,editTextEmail,editTextPassword, editTextLeanerName,
+    editTextExpertName;
+    Button buttonSignUp,buttonSchoolCollege,buttonUniversity,
+            buttonCssProfessional, buttonExpertSchoolCollege,
+            buttonExpertUniversity,buttonExpertCssProfessional;
     RadioGroup radioGroup;
     RadioButton radioButtonLearner,radioButtonExpert;
+
+    LinearLayout expertDesign,learnerDesign;
 
     FirebaseAuth firebaseAuth;
     String userId;
@@ -45,10 +50,15 @@ public class RegistrationActivity extends AppCompatActivity {
     }
 
     private void setListeners() {
-        buttonSignUp.setOnClickListener(new View.OnClickListener() {
+        buttonSignUp.setOnClickListener(view -> validation());
+
+        radioButtonLearner.setOnClickListener(view -> {
+            learnerDesign.setVisibility(View.VISIBLE);
+        });
+        radioButtonExpert.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                validation();
+                expertDesign.setVisibility(View.VISIBLE);
             }
         });
     }
@@ -104,19 +114,44 @@ public class RegistrationActivity extends AppCompatActivity {
     }
 
     private void initViews() {
+        //EditText
         editTextName=findViewById(R.id.editTextName);
         editTextPassword=findViewById(R.id.editTextPassword);
         editTextEmail=findViewById(R.id.editTextEmail);
+        editTextLeanerName =findViewById(R.id.editTextLeanerName);
+        editTextExpertName=findViewById(R.id.editTextExpertName);
+
+
+        //Buttons
         buttonSignUp=findViewById(R.id.buttonSignUp);
+        buttonCssProfessional=findViewById(R.id.buttonCssProfessional);
+        buttonUniversity=findViewById(R.id.buttonUniversity);
+        buttonSchoolCollege=findViewById(R.id.buttonSchoolCollege);
 
+        //ExpertButtons
+        buttonExpertSchoolCollege=findViewById(R.id.buttonExpertSchoolCollege);
+        buttonExpertUniversity=findViewById(R.id.buttonExpertUniversity);
+        buttonExpertCssProfessional=findViewById(R.id.buttonExpertCssProfessional);
 
+        //firebase
         firebaseAuth=FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
         userCollection = db.collection("User");
 
+        //TextView
         textViewRegistration=findViewById(R.id.textViewRegistration);
+        textViewLearnerLevel=findViewById(R.id.textViewLearnerLevel);
+        textViewExpertLevel=findViewById(R.id.textViewExpertLevel);
+
+        //radioGroup
         radioGroup=findViewById(R.id.radioGroup);
         radioButtonLearner=findViewById(R.id.radioButtonLearner);
         radioButtonExpert=findViewById(R.id.radioButtonExpert);
+
+        //linerLayoutForDesigns
+       learnerDesign=findViewById(R.id.leanerDesign);
+        learnerDesign.setVisibility(View.GONE);
+       expertDesign=findViewById(R.id.expertDesign);
+        expertDesign.setVisibility(View.GONE);
     }
 }
