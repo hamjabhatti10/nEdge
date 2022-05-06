@@ -27,12 +27,16 @@ import com.google.firebase.firestore.FirebaseFirestore;
 public class RegistrationActivity extends AppCompatActivity {
     TextView textViewRegistration,textViewLearnerLevel,textViewExpertLevel;
     EditText editTextName,editTextEmail,editTextPassword, editTextLeanerName,
-    editTextExpertName;
-    Button buttonSignUp,buttonSchoolCollege,buttonUniversity,
-            buttonCssProfessional, buttonExpertSchoolCollege,
-            buttonExpertUniversity,buttonExpertCssProfessional;
-    RadioGroup radioGroup;
-    RadioButton radioButtonLearner,radioButtonExpert;
+    editTextExpertName,editTextExpertLevelAnswer,editTextExpertLevelLecture,editTextExpertLevelSubject,
+            editTextExpertLevelDateTime;
+    Button buttonSignUp;
+    RadioGroup radioGroup,radioButtonExpertOption,radioButtonLearnerOptions;
+    RadioButton radioButtonLearner,radioButtonExpert,radiobuttonSchoolCollege,
+            radiobuttonUniversity,
+            radiobuttonCssProfessional,
+            radiobuttonExpertSchoolCollege,
+            radiobuttonExpertUniversity,
+            radiobuttonExpertCssProfessional;
 
     LinearLayout expertDesign,learnerDesign;
 
@@ -54,11 +58,14 @@ public class RegistrationActivity extends AppCompatActivity {
 
         radioButtonLearner.setOnClickListener(view -> {
             learnerDesign.setVisibility(View.VISIBLE);
+            expertDesign.setVisibility(View.GONE);
         });
         radioButtonExpert.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 expertDesign.setVisibility(View.VISIBLE);
+                learnerDesign.setVisibility(View.GONE);
+
             }
         });
     }
@@ -79,6 +86,24 @@ public class RegistrationActivity extends AppCompatActivity {
         }
         else if  (TextUtils.isEmpty(radioButtonExpert.getText().toString())) {
             radioButtonExpert.setError(getString(R.string.require_field));
+        }
+        else if  (TextUtils.isEmpty(editTextLeanerName.getText().toString())) {
+            editTextLeanerName.setError(getString(R.string.require_field));
+        }
+        else if  (TextUtils.isEmpty(editTextExpertName.getText().toString())) {
+            editTextExpertName.setError(getString(R.string.require_field));
+        }
+        else if  (TextUtils.isEmpty(editTextExpertLevelAnswer.getText().toString())) {
+            editTextExpertLevelAnswer.setError(getString(R.string.require_field));
+        }
+        else if  (TextUtils.isEmpty(editTextExpertLevelLecture.getText().toString())) {
+            editTextExpertLevelLecture.setError(getString(R.string.require_field));
+        }
+        else if  (TextUtils.isEmpty(editTextExpertLevelSubject.getText().toString())) {
+            editTextExpertLevelSubject.setError(getString(R.string.require_field));
+        }
+        else if  (TextUtils.isEmpty(editTextExpertLevelDateTime.getText().toString())) {
+            editTextExpertLevelDateTime.setError(getString(R.string.require_field));
         }
         else{
             creatingUsers();
@@ -119,19 +144,18 @@ public class RegistrationActivity extends AppCompatActivity {
         editTextPassword=findViewById(R.id.editTextPassword);
         editTextEmail=findViewById(R.id.editTextEmail);
         editTextLeanerName =findViewById(R.id.editTextLeanerName);
+        //expertEditText
         editTextExpertName=findViewById(R.id.editTextExpertName);
-
+        editTextExpertLevelAnswer=findViewById(R.id.editTextExpertLevelAnswer);
+        editTextExpertLevelLecture=findViewById(R.id.editTextExpertLevelLecture);
+        editTextExpertLevelSubject=findViewById(R.id.editTextExpertLevelSubject);
+        editTextExpertLevelDateTime=findViewById(R.id.editTextExpertLevelDateTime);
 
         //Buttons
         buttonSignUp=findViewById(R.id.buttonSignUp);
-        buttonCssProfessional=findViewById(R.id.buttonCssProfessional);
-        buttonUniversity=findViewById(R.id.buttonUniversity);
-        buttonSchoolCollege=findViewById(R.id.buttonSchoolCollege);
 
-        //ExpertButtons
-        buttonExpertSchoolCollege=findViewById(R.id.buttonExpertSchoolCollege);
-        buttonExpertUniversity=findViewById(R.id.buttonExpertUniversity);
-        buttonExpertCssProfessional=findViewById(R.id.buttonExpertCssProfessional);
+
+
 
         //firebase
         firebaseAuth=FirebaseAuth.getInstance();
@@ -147,6 +171,18 @@ public class RegistrationActivity extends AppCompatActivity {
         radioGroup=findViewById(R.id.radioGroup);
         radioButtonLearner=findViewById(R.id.radioButtonLearner);
         radioButtonExpert=findViewById(R.id.radioButtonExpert);
+        radioButtonExpertOption=findViewById(R.id.radioButtonExpertOption);
+        radioButtonLearnerOptions=findViewById(R.id.radioButtonLearnerOptions);
+
+        //ExpertRadioButtons
+        radiobuttonExpertSchoolCollege=findViewById(R.id.radiobuttonExpertSchoolCollege);
+        radiobuttonExpertUniversity=findViewById(R.id.radiobuttonExpertUniversity);
+        radiobuttonExpertCssProfessional=findViewById(R.id.radiobuttonExpertCssProfessional);
+
+        //LearnerRadioButtons
+        radiobuttonCssProfessional=findViewById(R.id.radiobuttonCssProfessional);
+        radiobuttonUniversity=findViewById(R.id.radiobuttonUniversity);
+        radiobuttonSchoolCollege=findViewById(R.id.radiobuttonSchoolCollege);
 
         //linerLayoutForDesigns
        learnerDesign=findViewById(R.id.leanerDesign);

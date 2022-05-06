@@ -69,5 +69,10 @@
     <string name="css_professional">CSS/Professional</string>
     <string name="expert_levels">Expert Levels</string>
     <string name="expert_name">Expert Name</string>
+    <string name="leaner_levels">Leaner Levels</string>
+    <string name="subject">Subject</string>
+    <string name="rate_per_lecture">Rate per lecture</string>
+    <string name="rate_per_marking_an_answer">Rate per marking an answer</string>
+    <string name="availability_time_pst_day">Availability: Time PST DAY</string>
 
 </resources>

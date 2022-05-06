@@ -13,8 +13,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/editTextEmailPhone"
         android:gravity="center_vertical"
-        android:inputType="textEmailAddress|number"
-        android:hint="@string/phone_email"/>
+        android:inputType="textEmailAddress"
+        android:hint="Email"/>
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
