@@ -32,6 +32,7 @@
         android:inputType="textEmailAddress"
         android:id="@+id/editTextEmail"
         android:hint="Email"/>
+
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -39,147 +40,78 @@
         android:inputType="textPassword"
         android:hint="@string/password" />
 
-
-    <RadioGroup
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:id="@+id/radioGroup">
-
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/radioButtonLearner"
-            android:text="@string/a_learner"/>
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/radioButtonExpert"
-            android:text="@string/an_expert"/>
-
-    </RadioGroup>
-
-
-    //LearnerDesign
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        android:id="@+id/leanerDesign"
-        android:orientation="vertical">
-
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/editTextLeanerName"
-            android:hint="@string/leaner_name"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/textViewLearnerLevel"
-            android:text="@string/leaner_levels"
-            android:gravity="center"
-            android:textSize="25sp"/>
-        <RadioGroup
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:id="@+id/radioButtonLearnerOptions">
-    <RadioButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/radiobuttonSchoolCollege"
-        android:text="@string/school_college"/>
-    <RadioButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/radiobuttonUniversity"
-        android:text="@string/university"/>
-    <RadioButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/radiobuttonCssProfessional"
-        android:text="@string/css_professional"/>
-
-        </RadioGroup>
-
-    </LinearLayout>
-
-    //ExpertDesign
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        android:id="@+id/expertDesign"
-        android:orientation="vertical">
-
-
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/editTextExpertName"
-        android:hint="@string/expert_name"/>
+        android:id="@+id/editTextPhoneNumber"
+        android:inputType="phone"
+        android:hint="Phone #" />
 
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/textViewExpertLevel"
-        android:text="@string/expert_levels"
-        android:gravity="center"
-        android:textSize="25sp"/>
+        android:layout_marginTop="@dimen/_15dp">
 
-        <RadioGroup
-            android:layout_width="match_parent"
+        //Register_as
+        <TextView
+            android:id="@+id/textViewRegister_as"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/radioButtonExpertOption"
-            android:orientation="vertical">
-    <RadioButton
-        android:layout_width="@dimen/_150dp"
+            android:text="Register as:" />
+
+        <Spinner
+        android:id="@+id/spinnerRegister_as"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/radiobuttonExpertSchoolCollege"
-        android:text="@string/school_college"/>
-    <RadioButton
-        android:layout_width="@dimen/_150dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/radiobuttonExpertUniversity"
-        android:text="@string/university"/>
-    <RadioButton
-        android:layout_width="@dimen/_150dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/radiobuttonExpertCssProfessional"
-        android:text="@string/css_professional"/>
+        android:layout_marginBottom="20dp"
+        android:layout_toEndOf="@+id/textViewRegister_as"
+        android:layout_toRightOf="@+id/textViewRegister_as" />
 
-        </RadioGroup>
+        //Student_Options
+        <TextView
+            android:id="@+id/textViewStudentLevelOptions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/spinnerRegister_as"
+            android:layout_marginBottom="@dimen/_15dp"
+            android:text="I want to learn at:" />
 
-        <EditText
+        <Spinner
+            android:id="@+id/spinnerStudentLevelOptions"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/editTextExpertLevelAnswer"
-            android:hint="@string/rate_per_marking_an_answer"
-            android:inputType="number"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/editTextExpertLevelLecture"
-            android:hint="@string/rate_per_lecture"
-            android:inputType="number"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/editTextExpertLevelSubject"
-            android:hint="@string/subject"
-            android:inputType="number"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/editTextExpertLevelDateTime"
-            android:hint="@string/availability_time_pst_day"
-            android:inputType="datetime"/>
+            android:layout_below="@id/spinnerRegister_as"
+            android:layout_marginBottom="@dimen/_15dp"
+            android:layout_toEndOf="@+id/textViewStudentLevelOptions"
+            android:layout_toRightOf="@+id/textViewStudentLevelOptions" />
 
-    </LinearLayout>
+        //Expert_Options
+        <TextView
+            android:id="@+id/textViewExpertLevelOptions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textViewStudentLevelOptions"
+            android:layout_marginBottom="@dimen/_15dp"
+            android:text="I am expert at:" />
+
+        <Spinner
+            android:id="@+id/spinnerExpertLevelOptions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/spinnerStudentLevelOptions"
+            android:layout_marginBottom="@dimen/_15dp"
+            android:layout_toEndOf="@+id/textViewExpertLevelOptions"
+            android:layout_toRightOf="@+id/textViewExpertLevelOptions" />
+
+
+
+
+
+    </RelativeLayout>
+
+
+
+
 
     <Button
         android:layout_width="wrap_content"

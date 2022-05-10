@@ -9,6 +9,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.app.nEdge.R;
@@ -21,7 +22,8 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class LoginActivity extends AppCompatActivity {
      EditText editTextEmailPhone,editTextPassword;
-     Button buttonLogin,buttonSignUp;
+     Button buttonLogin;
+     TextView textViewRegistration;
      FirebaseAuth firebaseAuth;
 
     @Override
@@ -34,7 +36,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private void setListeners() {
         buttonLogin.setOnClickListener(view -> validation());
-        buttonSignUp.setOnClickListener(view -> {
+        textViewRegistration.setOnClickListener(view -> {
             Intent intent= new Intent(LoginActivity.this,RegistrationActivity.class);
             startActivity(intent);
         });
@@ -75,7 +77,7 @@ public class LoginActivity extends AppCompatActivity {
         editTextEmailPhone=findViewById(R.id.editTextEmailPhone);
         editTextPassword=findViewById(R.id.editTextPassword);
         buttonLogin=findViewById(R.id.buttonLogin);
-        buttonSignUp=findViewById(R.id.buttonSignUp);
+        textViewRegistration=findViewById(R.id.textViewRegistration);
         firebaseAuth= FirebaseAuth.getInstance();
     }
 }

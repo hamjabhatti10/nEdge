@@ -5,11 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,20 +25,11 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class RegistrationActivity extends AppCompatActivity {
-    TextView textViewRegistration,textViewLearnerLevel,textViewExpertLevel;
-    EditText editTextName,editTextEmail,editTextPassword, editTextLeanerName,
-    editTextExpertName,editTextExpertLevelAnswer,editTextExpertLevelLecture,editTextExpertLevelSubject,
-            editTextExpertLevelDateTime;
-    Button buttonSignUp;
-    RadioGroup radioGroup,radioButtonExpertOption,radioButtonLearnerOptions;
-    RadioButton radioButtonLearner,radioButtonExpert,radiobuttonSchoolCollege,
-            radiobuttonUniversity,
-            radiobuttonCssProfessional,
-            radiobuttonExpertSchoolCollege,
-            radiobuttonExpertUniversity,
-            radiobuttonExpertCssProfessional;
+    TextView textViewRegistration,textViewStudentLevelOptions,textViewExpertLevelOptions;
+    EditText editTextName,editTextEmail,editTextPassword,editTextPhoneNumber;
 
-    LinearLayout expertDesign,learnerDesign;
+    Button buttonSignUp;
+    Spinner spinnerRegister_as, spinnerStudentLevelOptions,spinnerExpertLevelOptions;
 
     FirebaseAuth firebaseAuth;
     String userId;
@@ -51,24 +42,18 @@ public class RegistrationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_registration);
         initViews();
         setListeners();
+
     }
 
     private void setListeners() {
-        buttonSignUp.setOnClickListener(view -> validation());
-
-        radioButtonLearner.setOnClickListener(view -> {
-            learnerDesign.setVisibility(View.VISIBLE);
-            expertDesign.setVisibility(View.GONE);
-        });
-        radioButtonExpert.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                expertDesign.setVisibility(View.VISIBLE);
-                learnerDesign.setVisibility(View.GONE);
-
-            }
-        });
+    buttonSignUp.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            validation();
+        }
+    });
     }
+
 
     private void validation() {
         if  (TextUtils.isEmpty(editTextName.getText().toString())) {
@@ -81,30 +66,10 @@ public class RegistrationActivity extends AppCompatActivity {
         }  else if  (TextUtils.isEmpty(editTextPassword.getText().toString())) {
             editTextPassword.setError(getString(R.string.require_field));
         }
-        else if  (TextUtils.isEmpty(radioButtonLearner.getText().toString())) {
-            radioButtonLearner.setError(getString(R.string.require_field));
+        else if  (TextUtils.isEmpty(editTextPhoneNumber.getText().toString())) {
+            editTextPhoneNumber.setError(getString(R.string.require_field));
         }
-        else if  (TextUtils.isEmpty(radioButtonExpert.getText().toString())) {
-            radioButtonExpert.setError(getString(R.string.require_field));
-        }
-        else if  (TextUtils.isEmpty(editTextLeanerName.getText().toString())) {
-            editTextLeanerName.setError(getString(R.string.require_field));
-        }
-        else if  (TextUtils.isEmpty(editTextExpertName.getText().toString())) {
-            editTextExpertName.setError(getString(R.string.require_field));
-        }
-        else if  (TextUtils.isEmpty(editTextExpertLevelAnswer.getText().toString())) {
-            editTextExpertLevelAnswer.setError(getString(R.string.require_field));
-        }
-        else if  (TextUtils.isEmpty(editTextExpertLevelLecture.getText().toString())) {
-            editTextExpertLevelLecture.setError(getString(R.string.require_field));
-        }
-        else if  (TextUtils.isEmpty(editTextExpertLevelSubject.getText().toString())) {
-            editTextExpertLevelSubject.setError(getString(R.string.require_field));
-        }
-        else if  (TextUtils.isEmpty(editTextExpertLevelDateTime.getText().toString())) {
-            editTextExpertLevelDateTime.setError(getString(R.string.require_field));
-        }
+
         else{
             creatingUsers();
         }
@@ -143,51 +108,105 @@ public class RegistrationActivity extends AppCompatActivity {
         editTextName=findViewById(R.id.editTextName);
         editTextPassword=findViewById(R.id.editTextPassword);
         editTextEmail=findViewById(R.id.editTextEmail);
-        editTextLeanerName =findViewById(R.id.editTextLeanerName);
-        //expertEditText
-        editTextExpertName=findViewById(R.id.editTextExpertName);
-        editTextExpertLevelAnswer=findViewById(R.id.editTextExpertLevelAnswer);
-        editTextExpertLevelLecture=findViewById(R.id.editTextExpertLevelLecture);
-        editTextExpertLevelSubject=findViewById(R.id.editTextExpertLevelSubject);
-        editTextExpertLevelDateTime=findViewById(R.id.editTextExpertLevelDateTime);
-
+        editTextPhoneNumber=findViewById(R.id.editTextPhoneNumber);
         //Buttons
         buttonSignUp=findViewById(R.id.buttonSignUp);
-
-
-
-
+        //spinnerRegisterOptions
+        spinnerRegister_as=findViewById(R.id.spinnerRegister_as);
+        registerSpinner();
+        //spinnerStudentOptions
+        spinnerStudentLevelOptions =findViewById(R.id.spinnerStudentLevelOptions);
+        spinnerStudentLevelOptions.setVisibility(View.GONE);
+        StudentOptionSpinner();
+        //spinnerExpertOption
+        spinnerExpertLevelOptions=findViewById(R.id.spinnerExpertLevelOptions);
+        spinnerExpertLevelOptions.setVisibility(View.GONE);
+        expertOptionSpinner();
         //firebase
         firebaseAuth=FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
         userCollection = db.collection("User");
-
         //TextView
         textViewRegistration=findViewById(R.id.textViewRegistration);
-        textViewLearnerLevel=findViewById(R.id.textViewLearnerLevel);
-        textViewExpertLevel=findViewById(R.id.textViewExpertLevel);
+        textViewStudentLevelOptions=findViewById(R.id.textViewStudentLevelOptions);
+        textViewExpertLevelOptions=findViewById(R.id.textViewExpertLevelOptions);
+    }
 
-        //radioGroup
-        radioGroup=findViewById(R.id.radioGroup);
-        radioButtonLearner=findViewById(R.id.radioButtonLearner);
-        radioButtonExpert=findViewById(R.id.radioButtonExpert);
-        radioButtonExpertOption=findViewById(R.id.radioButtonExpertOption);
-        radioButtonLearnerOptions=findViewById(R.id.radioButtonLearnerOptions);
+    private void expertOptionSpinner() {
+        ArrayAdapter<CharSequence> adapter= ArrayAdapter.createFromResource(this, R.array.ExpertOptions,
+                android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerExpertLevelOptions.setAdapter(adapter);
+        spinnerExpertLevelOptions.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String ExpertOptions= adapterView.getItemAtPosition(i).toString();
+                Toast.makeText(adapterView.getContext(),ExpertOptions,Toast.LENGTH_SHORT).show();
+            }
 
-        //ExpertRadioButtons
-        radiobuttonExpertSchoolCollege=findViewById(R.id.radiobuttonExpertSchoolCollege);
-        radiobuttonExpertUniversity=findViewById(R.id.radiobuttonExpertUniversity);
-        radiobuttonExpertCssProfessional=findViewById(R.id.radiobuttonExpertCssProfessional);
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
 
-        //LearnerRadioButtons
-        radiobuttonCssProfessional=findViewById(R.id.radiobuttonCssProfessional);
-        radiobuttonUniversity=findViewById(R.id.radiobuttonUniversity);
-        radiobuttonSchoolCollege=findViewById(R.id.radiobuttonSchoolCollege);
+            }
+        });
+    }
 
-        //linerLayoutForDesigns
-       learnerDesign=findViewById(R.id.leanerDesign);
-        learnerDesign.setVisibility(View.GONE);
-       expertDesign=findViewById(R.id.expertDesign);
-        expertDesign.setVisibility(View.GONE);
+    private void StudentOptionSpinner() {
+        ArrayAdapter<CharSequence> adapter= ArrayAdapter.createFromResource(this, R.array.StudentOptions,
+                android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerStudentLevelOptions.setAdapter(adapter);
+        spinnerStudentLevelOptions.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String StudentOptions= adapterView.getItemAtPosition(i).toString();
+                Toast.makeText(adapterView.getContext(),StudentOptions,Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+    }
+
+    private void registerSpinner() {
+        ArrayAdapter<CharSequence> adapter= ArrayAdapter.createFromResource(this, R.array.RegisterOptions,
+                android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerRegister_as.setAdapter(adapter);
+        spinnerRegister_as.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String registerOptions= adapterView.getItemAtPosition(i).toString();
+         if(spinnerRegister_as.getSelectedItem().toString().equals("Expert"))
+         {
+             spinnerExpertLevelOptions.setVisibility(View.VISIBLE);
+             textViewExpertLevelOptions.setVisibility(View.VISIBLE);
+             spinnerStudentLevelOptions.setVisibility(View.GONE);
+             textViewStudentLevelOptions.setVisibility(View.GONE);
+         }
+         else if(spinnerRegister_as.getSelectedItem().toString().equals("Student"))
+         {
+             spinnerExpertLevelOptions.setVisibility(View.GONE);
+             textViewExpertLevelOptions.setVisibility(View.GONE);
+             textViewStudentLevelOptions.setVisibility(View.VISIBLE);
+             spinnerStudentLevelOptions.setVisibility(View.VISIBLE);
+         }
+         else
+         {
+                    Toast.makeText(adapterView.getContext(),registerOptions,Toast.LENGTH_SHORT).show();
+                }
+
+
+
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+            }
+        });
+
     }
 }

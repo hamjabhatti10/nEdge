@@ -59,20 +59,27 @@
     <string name="require_field">require_field</string>
     <string name="password">Password</string>
     <string name="registration">Registration</string>
-    <string name="a_learner">A Learner</string>
-    <string name="an_expert">An Expert</string>
     <string name="name">Name</string>
-    <string name="leaner_name">Leaner Name</string>
-    <string name="learner_level">Learner Level</string>
-    <string name="school_college">School/College</string>
-    <string name="university">University</string>
-    <string name="css_professional">CSS/Professional</string>
-    <string name="expert_levels">Expert Levels</string>
-    <string name="expert_name">Expert Name</string>
-    <string name="leaner_levels">Leaner Levels</string>
-    <string name="subject">Subject</string>
-    <string name="rate_per_lecture">Rate per lecture</string>
-    <string name="rate_per_marking_an_answer">Rate per marking an answer</string>
-    <string name="availability_time_pst_day">Availability: Time PST DAY</string>
+
+    <string-array name="RegisterOptions">
+        <item>"?"</item>
+        <item>Student</item>
+        <item>Expert</item>
+    </string-array>
+
+    <string-array name="StudentOptions">
+        <item>School/College</item>
+        <item>University</item>
+        <item>CSS/Professional</item>
+    </string-array>
+
+    <string-array name="ExpertOptions">
+        <item>School/College</item>
+        <item>University</item>
+        <item>CSS/Professional</item>
+    </string-array>
+
+
+
 
 </resources>
