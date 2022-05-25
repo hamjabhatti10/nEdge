@@ -9,10 +9,11 @@ import android.os.Bundle
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.Toast
+import com.app.nEdge.CommonKeys.CommonKeys
+import com.app.nEdge.CommonKeys.CommonKeys.Companion.KEY_FRAGMENT
 import com.app.nEdge.R
 import com.app.nEdge.constant.Constants
 import com.app.nEdge.ui.wrapper.FrameActivity
-import com.app.nEdge.utils.CommonKeys.Companion.KEY_FRAGMENT
 import com.google.android.gms.common.GoogleApiAvailability
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException
 import com.google.android.gms.common.GooglePlayServicesRepairableException

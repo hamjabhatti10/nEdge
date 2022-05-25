@@ -1,30 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/_15dp"
     android:orientation="vertical"
     tools:context=".ui.activities.RegistrationActivtiy.RegistrationActivity">
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_margin="@dimen/_20dp"
     android:orientation="vertical">
-<TextView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:id="@+id/textViewRegistration"
-    android:gravity="center"
-    android:textSize="30sp"
-    android:text="@string/registration"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textViewRegistration"
+        android:gravity="center"
+        android:layout_marginVertical="@dimen/_5dp"
+        android:text="@string/registration"
+        android:textSize="@dimen/_25sp" />
 
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/editTextName"
-        android:hint="Name"/>
+        android:layout_marginVertical="@dimen/_5dp"
+        android:hint="@string/name" />
 
 
     <EditText
@@ -32,13 +34,15 @@
         android:layout_height="wrap_content"
         android:inputType="textEmailAddress"
         android:id="@+id/editTextEmail"
-        android:hint="Email"/>
+        android:layout_marginVertical="@dimen/_5dp"
+        android:hint="@string/email" />
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/editTextPassword"
         android:inputType="textPassword"
+        android:layout_marginVertical="@dimen/_5dp"
         android:hint="@string/password" />
 
     <EditText
@@ -46,80 +50,31 @@
         android:layout_height="wrap_content"
         android:id="@+id/editTextPhoneNumber"
         android:inputType="phone"
-        android:hint="Phone #" />
+        android:layout_marginVertical="@dimen/_5dp"
+        android:hint="@string/phone" />
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_15dp">
-
-        //Register_as
-        <TextView
-            android:id="@+id/textViewRegister_as"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Register as:" />
-
-        <Spinner
-        android:id="@+id/spinnerRegister_as"
+    <Spinner
+        android:id="@+id/spinnerUserType"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
-        android:layout_toEndOf="@+id/textViewRegister_as"
-        android:layout_toRightOf="@+id/textViewRegister_as" />
+        android:layout_marginVertical="@dimen/_5dp"
+        android:entries="@array/userType" />
 
-        //Student_Options
-        <TextView
-            android:id="@+id/textViewStudentLevelOptions"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/spinnerRegister_as"
-            android:layout_marginBottom="@dimen/_15dp"
-            android:text="I want to learn at:" />
-
-        <Spinner
-            android:id="@+id/spinnerStudentLevelOptions"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/spinnerRegister_as"
-            android:layout_marginBottom="@dimen/_15dp"
-            android:layout_toEndOf="@+id/textViewStudentLevelOptions"
-            android:layout_toRightOf="@+id/textViewStudentLevelOptions" />
-
-        //Expert_Options
-        <TextView
-            android:id="@+id/textViewExpertLevelOptions"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/textViewStudentLevelOptions"
-            android:layout_marginBottom="@dimen/_15dp"
-            android:text="I am expert at:" />
-
-        <Spinner
-            android:id="@+id/spinnerExpertLevelOptions"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/spinnerStudentLevelOptions"
-            android:layout_marginBottom="@dimen/_15dp"
-            android:layout_toEndOf="@+id/textViewExpertLevelOptions"
-            android:layout_toRightOf="@+id/textViewExpertLevelOptions" />
-
-
-
-
-
-    </RelativeLayout>
-
-
-
-
+    <Spinner
+        android:id="@+id/spinnerLevelOptions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/_5dp" />
 
     <Button
-        android:layout_width="@dimen/_150dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:id="@+id/buttonRegister"
-        android:hint="Register"/>
+        android:layout_marginVertical="@dimen/_15dp"
+        android:text="@string/register"
+        android:textAllCaps="false" />
 
 
 </LinearLayout>

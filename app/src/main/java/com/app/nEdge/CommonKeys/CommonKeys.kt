@@ -1,4 +1,4 @@
-package com.app.nEdge.utils
+package com.app.nEdge.CommonKeys
 
 class CommonKeys {
     companion object {

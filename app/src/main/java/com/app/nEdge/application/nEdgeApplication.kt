@@ -18,10 +18,9 @@ class nEdgeApplication : Application(), LifecycleObserver {
     override fun onCreate() {
         super.onCreate()
         MultiDex.install(this)
-        //    mAuth = FirebaseAuth.getInstance()
-        //  firestoreDB = FirebaseFirestore.getInstance()
+        mAuth = FirebaseAuth.getInstance()
+        firestoreDB = FirebaseFirestore.getInstance()
         // FacebookSdk.sdkInitialize(this)
-        //   AppEventsLogger.activateApp(this)
 //        when {
 //            BuildConfig.FLAVOR.equals(Constants.STAGING) -> {
 //                mGso =
@@ -104,7 +103,7 @@ class nEdgeApplication : Application(), LifecycleObserver {
             return mGso
         }
 
-        fun getFirebaseAuthen(): FirebaseAuth {
+        fun getFirebaseAuth(): FirebaseAuth {
             return mAuth
         }
 
