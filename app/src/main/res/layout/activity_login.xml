@@ -16,7 +16,6 @@
         android:textStyle="bold"
         android:text="nEdge"
         android:textSize="@dimen/_100dp"/>
-
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

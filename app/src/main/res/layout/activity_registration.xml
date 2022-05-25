@@ -24,7 +24,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/editTextName"
-        android:hint="@string/name"/>
+        android:hint="Name"/>
+
 
     <EditText
         android:layout_width="match_parent"
@@ -114,13 +115,11 @@
 
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/_150dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:background="@color/color_black"
-        android:textColor="@color/color_white"
-        android:id="@+id/buttonSignUp"
-        android:hint="@string/signup"/>
+        android:id="@+id/buttonRegister"
+        android:hint="Register"/>
 
 
 </LinearLayout>

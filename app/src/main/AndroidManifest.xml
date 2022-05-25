@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.app.nEdge">
+    package="com.app.nEdge" >
 
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -18,37 +18,30 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
-        tools:targetApi="m">
+        tools:targetApi="m" >
+        <activity
+            android:name=".ui.activities.mainActivity.MainActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.activities.RegistrationActivtiy.RegistrationActivity"
             android:exported="true"
-            android:screenOrientation="portrait">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            android:screenOrientation="portrait" >
+          
         </activity>
-
         <activity
             android:name=".ui.activities.loginActivity.LoginActivity"
             android:exported="true"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait" >
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
 
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
         </activity>
-
-
-
         <activity
             android:name=".ui.activities.splashActivity.SplashActivity"
             android:exported="true"
-            android:screenOrientation="portrait">
-
-        </activity>
-
-
-        <activity
-            android:name=".ui.activities.mainActivity.MainActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".ui.activities.serverSettingActivity.ServerSettingActivity"
@@ -59,7 +52,7 @@
 
         <service
             android:name=".source.remote.firebase.FirebaseNotificationService"
-            android:exported="false">
+            android:exported="false" >
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
@@ -95,7 +88,7 @@
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.provider"
             android:exported="false"
-            android:grantUriPermissions="true">
+            android:grantUriPermissions="true" >
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
