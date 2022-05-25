@@ -50,4 +50,22 @@
     <string name="camera_permission_msg">Please enable camera permission from Settings.</string>
     <string name="gallery_permission_msg">Please enable gallery permission from Settings.</string>
     <string name="permission_denied">Permission Denied</string>
+    <string name="complete_profile">Complete Profile</string>
+    <string name="rate_per_making_answer">Rate per making answer</string>
+    <string name="rate_per_lecture">Rate per lecture</string>
+    <string name="start_time">Start time</string>
+    <string name="end_time">End time</string>
+    <string name="done">Done</string>
+
+    <array name="days">
+        <item>Availability Days:?</item>
+        <item>Monday</item>
+        <item>Tuesday</item>
+        <item>Wednesday</item>
+        <item>Thursday</item>
+        <item>Friday</item>
+        <item>Saturday</item>
+        <item>Sunday</item>
+
+    </array>
 </resources>
