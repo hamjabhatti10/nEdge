@@ -7,20 +7,24 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import com.app.nEdge.CommonKeys.CommonKeys
 import com.app.nEdge.R
+import com.app.nEdge.application.nEdgeApplication
 import com.app.nEdge.customData.enums.EducationType
 import com.app.nEdge.customData.enums.NetworkStatus
 import com.app.nEdge.customData.enums.UserType
 import com.app.nEdge.databinding.ActivityRegistrationBinding
 import com.app.nEdge.models.UserBuilder
+import com.app.nEdge.source.local.prefrance.PrefUtils
 import com.app.nEdge.ui.activities.mainActivity.MainActivity
+import com.app.nEdge.ui.base.BaseActivity
 import com.app.nEdge.ui.customWidgets.ProgressHUD
 import com.app.nEdge.utils.ActivityUtils
+import com.google.android.gms.tasks.Task
+import com.google.firebase.auth.AuthResult
 
-class RegistrationActivity : AppCompatActivity() {
-    var userId: String? = null
+class RegistrationActivity : BaseActivity() {
     private lateinit var mBinding: ActivityRegistrationBinding
     private lateinit var viewModel: RegisterActivityViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,6 +48,10 @@ class RegistrationActivity : AppCompatActivity() {
                 }
                 NetworkStatus.SUCCESS -> {
                     ProgressHUD.removeView()
+                    PrefUtils.setString(
+                        this, CommonKeys.KEY_USER_TYPE,
+                        viewModel.userType.toString()
+                    )
                     ActivityUtils.startNewActivity(this, MainActivity::class.java)
                 }
                 NetworkStatus.ERROR -> {
@@ -135,14 +143,23 @@ class RegistrationActivity : AppCompatActivity() {
         } else if (mBinding.spinnerLevelOptions.selectedItemPosition == 0) {
             Toast.makeText(this, getString(R.string.levelValidation), Toast.LENGTH_SHORT).show()
         } else {
-            if (viewModel.userType == UserType.Student)
-                viewModel.registerUser(mBinding.editTextPassword.text.toString(), createUserModel())
-            else {
-
-            }
+            registerUser(mBinding.editTextPassword.text.toString(), createUserModel())
         }
     }
 
+    private fun registerUser(password: String, user: UserBuilder) {
+        user.email?.let {
+            nEdgeApplication.getFirebaseAuth().createUserWithEmailAndPassword(it, password)
+                .addOnCompleteListener { task: Task<AuthResult?> ->
+                    if (task.isSuccessful) {
+                        user.userId = nEdgeApplication.getFirebaseAuth().currentUser?.uid
+                        viewModel.addUserDataToFirebase(UserBuilder.build(createUserModel()))
+                    } else {
+                        Toast.makeText(this, R.string.someThingWentWrong, Toast.LENGTH_SHORT).show()
+                    }
+                }
+        }
+    }
 
     private fun createUserModel(): UserBuilder {
         val userBuilder = UserBuilder()
