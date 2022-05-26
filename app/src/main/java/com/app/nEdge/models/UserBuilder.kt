@@ -1,6 +1,8 @@
 package com.app.nEdge.models
 
-class UserBuilder {
+import java.io.Serializable
+
+class UserBuilder : Serializable {
     var userId: String? = null
     var name: String? = null
     var email: String? = null

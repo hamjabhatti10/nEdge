@@ -24,6 +24,7 @@
         android:hint="@string/rate_per_making_answer"
         android:textColor="@color/color_black"
         android:textColorHint="@color/color_disable_button"
+        android:inputType="number"
         android:textSize="@dimen/_14sp" />
 
     <EditText
@@ -34,6 +35,7 @@
         android:hint="@string/rate_per_lecture"
         android:textColor="@color/color_black"
         android:textColorHint="@color/color_disable_button"
+        android:inputType="number"
         android:textSize="@dimen/_14sp" />
 
     <RelativeLayout
@@ -99,8 +101,7 @@
         android:id="@+id/spinnerSubjects"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_30dp"
-        android:layout_marginTop="@dimen/_20dp"
-        android:entries="@array/days" />
+        android:layout_marginTop="@dimen/_20dp" />
 
     <Spinner
         android:id="@+id/spinnerDays"

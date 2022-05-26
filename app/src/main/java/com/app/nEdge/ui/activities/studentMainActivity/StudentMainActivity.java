@@ -1,11 +1,12 @@
-package com.app.nEdge.ui.activities.mainActivity;
+package com.app.nEdge.ui.activities.studentMainActivity;
+
+import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
-import android.os.Bundle;
 
 import com.app.nEdge.R;
 
-public class MainActivity extends AppCompatActivity {
+public class StudentMainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

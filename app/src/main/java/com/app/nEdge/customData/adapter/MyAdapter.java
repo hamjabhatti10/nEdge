@@ -39,6 +39,10 @@ public class MyAdapter extends ArrayAdapter<SubjectSpinnerModel> {
         return getCustomView(position, convertView, parent);
     }
 
+    public ArrayList<SubjectSpinnerModel> getList() {
+        return listState;
+    }
+
     public View getCustomView(final int position, View convertView,
                               ViewGroup parent) {
 

@@ -11,8 +11,14 @@ import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import com.app.nEdge.CommonKeys.CommonKeys
 import com.app.nEdge.R
+import com.app.nEdge.customData.enums.UserType
 import com.app.nEdge.services.NetworkChangeReceiver
+import com.app.nEdge.source.local.prefrance.PrefUtils
+import com.app.nEdge.ui.activities.ExpertMainActivity.ExpertMainActivity
+import com.app.nEdge.ui.activities.studentMainActivity.StudentMainActivity
+import com.app.nEdge.utils.ActivityUtils
 import com.google.android.material.snackbar.Snackbar
 
 
@@ -115,7 +121,7 @@ abstract class BaseActivity : AppCompatActivity() {
             )
         )
 
-        connectionLiveData.observe(this, { isConnected ->
+        connectionLiveData.observe(this) { isConnected ->
             isConnected?.let {
                 if (it) {
                     snackBar.dismiss()
@@ -123,9 +129,21 @@ abstract class BaseActivity : AppCompatActivity() {
                     snackBar.show()
                 }
             }
-        })
+        }
 
     }
 
+    protected fun decideMainActivity() {
+        ActivityUtils.startNewActivity(
+            this,
+            if (PrefUtils.getString(this, CommonKeys.KEY_USER_TYPE)
+                == UserType.Student.toString()
+            )
+                StudentMainActivity::class.java
+            else ExpertMainActivity::class.java
+        )
+        finish()
 
+
+    }
 }

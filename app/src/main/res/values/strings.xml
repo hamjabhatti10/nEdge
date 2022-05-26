@@ -87,6 +87,9 @@
     <string name="userTypeValidation">Please select User type</string>
     <string name="someThingWentWrong">Something went wrong</string>
     <string name="passwordLengthValidation">Password length should be greater than 6</string>
+    <string name="subject">Subject ?</string>
+    <string name="subjectValidation">Please select Subject</string>
+    <string name="daysValidation">Please select at least one day</string>
 
     <string-array name="userType">
         <item>"Register as ?"</item>

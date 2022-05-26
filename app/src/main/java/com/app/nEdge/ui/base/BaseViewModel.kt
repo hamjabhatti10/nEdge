@@ -11,6 +11,7 @@ import com.app.nEdge.source.remote.rxjava.DisposableManager
 
 abstract class BaseViewModel : ViewModel() {
     var usersData: MutableLiveData<ApiResponse> = MutableLiveData()
+    var subjectsLiveData: MutableLiveData<ApiResponse> = MutableLiveData()
 
     fun setServerName(textView: TextView) {
 
@@ -30,6 +31,20 @@ abstract class BaseViewModel : ViewModel() {
                     usersData.value = ApiResponse.success(document)
                 } else {
                     usersData.value = ApiResponse.error(null)
+                }
+
+            }
+    }
+
+    fun getSubjectsData() {
+        subjectsLiveData.value = ApiResponse.loading()
+        nEdgeApplication.getFirebaseFirestore().collection(FireBaseCommonKeys.KEY_SUBJECTS)
+            .get().addOnSuccessListener { snapShot ->
+                if (snapShot != null && !snapShot.isEmpty) {
+                    val document = snapShot.documents[0]
+                    subjectsLiveData.value = ApiResponse.success(document)
+                } else {
+                    subjectsLiveData.value = ApiResponse.error(null)
                 }
 
             }

@@ -17,7 +17,8 @@ import com.app.nEdge.customData.enums.UserType
 import com.app.nEdge.databinding.ActivityRegistrationBinding
 import com.app.nEdge.models.UserBuilder
 import com.app.nEdge.source.local.prefrance.PrefUtils
-import com.app.nEdge.ui.activities.mainActivity.MainActivity
+import com.app.nEdge.ui.activities.expertRegistrationActivity.ExpertRegistrationActivity
+import com.app.nEdge.ui.activities.studentMainActivity.StudentMainActivity
 import com.app.nEdge.ui.base.BaseActivity
 import com.app.nEdge.ui.customWidgets.ProgressHUD
 import com.app.nEdge.utils.ActivityUtils
@@ -52,7 +53,15 @@ class RegistrationActivity : BaseActivity() {
                         this, CommonKeys.KEY_USER_TYPE,
                         viewModel.userType.toString()
                     )
-                    ActivityUtils.startNewActivity(this, MainActivity::class.java)
+                    if (viewModel.userType == UserType.Student)
+                        ActivityUtils.startNewActivity(this, StudentMainActivity::class.java)
+                    else {
+                        val bundle = Bundle().apply {
+                            putSerializable(CommonKeys.KEY_DATA, createUserModel())
+                        }
+                        ActivityUtils.startNewActivity(this, ExpertRegistrationActivity::class.java)
+                    }
+                    finish()
                 }
                 NetworkStatus.ERROR -> {
                     ProgressHUD.removeView()
@@ -152,7 +161,6 @@ class RegistrationActivity : BaseActivity() {
             nEdgeApplication.getFirebaseAuth().createUserWithEmailAndPassword(it, password)
                 .addOnCompleteListener { task: Task<AuthResult?> ->
                     if (task.isSuccessful) {
-                        user.userId = nEdgeApplication.getFirebaseAuth().currentUser?.uid
                         viewModel.addUserDataToFirebase(UserBuilder.build(createUserModel()))
                     } else {
                         Toast.makeText(this, R.string.someThingWentWrong, Toast.LENGTH_SHORT).show()
@@ -163,6 +171,7 @@ class RegistrationActivity : BaseActivity() {
 
     private fun createUserModel(): UserBuilder {
         val userBuilder = UserBuilder()
+        nEdgeApplication.getFirebaseAuth().currentUser?.uid
         userBuilder.name = mBinding.editTextName.text.toString()
         userBuilder.email = mBinding.editTextEmail.text.toString()
         userBuilder.phoneNumber = mBinding.editTextPhoneNumber.text.toString()

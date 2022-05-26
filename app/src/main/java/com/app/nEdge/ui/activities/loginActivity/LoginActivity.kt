@@ -13,7 +13,6 @@ import com.app.nEdge.databinding.ActivityLoginBinding
 import com.app.nEdge.models.User
 import com.app.nEdge.source.local.prefrance.PrefUtils
 import com.app.nEdge.ui.activities.RegistrationActivtiy.RegistrationActivity
-import com.app.nEdge.ui.activities.mainActivity.MainActivity
 import com.app.nEdge.ui.base.BaseActivity
 import com.app.nEdge.ui.customWidgets.ProgressHUD
 import com.app.nEdge.utils.ActivityUtils
@@ -50,7 +49,7 @@ class LoginActivity : BaseActivity() {
 
                     PrefUtils.setString(this, CommonKeys.KEY_USER_TYPE, user?.userType)
                     ProgressHUD.removeView()
-                    ActivityUtils.startNewActivity(this, MainActivity::class.java)
+                    decideMainActivity()
                 }
                 NetworkStatus.ERROR -> {
                     ProgressHUD.removeView()
