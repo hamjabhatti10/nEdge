@@ -5,10 +5,10 @@ import android.os.Bundle
 import android.text.TextUtils
 import android.view.MenuItem
 import androidx.fragment.app.Fragment
+import com.app.nEdge.CommonKeys.CommonKeys.Companion.KEY_DATA
+import com.app.nEdge.CommonKeys.CommonKeys.Companion.KEY_FRAGMENT
 import com.app.nEdge.R
 import com.app.nEdge.ui.base.BaseActivity
-import com.app.nEdge.utils.CommonKeys.Companion.KEY_DATA
-import com.app.nEdge.utils.CommonKeys.Companion.KEY_FRAGMENT
 import com.app.nEdge.utils.Log
 
 

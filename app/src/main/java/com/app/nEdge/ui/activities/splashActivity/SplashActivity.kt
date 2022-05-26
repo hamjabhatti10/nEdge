@@ -38,7 +38,7 @@ class SplashActivity : BaseActivity() {
             ViewModelProvider.NewInstanceFactory()
         ).get(SplashViewModel::class.java)
 
-        System.loadLibrary(Constants.CPP_LIBRARY_NAME)
+
 
         @Suppress("DEPRECATION")
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
