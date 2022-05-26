@@ -1,4 +1,4 @@
-package com.app.nEdge.utils
+package com.app.nEdge.CommonKeys
 
 class CommonKeys {
     companion object {
@@ -11,5 +11,6 @@ class CommonKeys {
         const val KEY_IS_LOGGED_IN = "_key_is_logged_in"
         const val TYPE_VIDEO = 1
         const val TYPE_PHOTO = 2
+        const val KEY_USER_TYPE = "_key_user_type_"
     }
 }

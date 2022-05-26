@@ -1,9 +1,9 @@
 package com.app.nEdge.source.remote.retrofit
 
 import android.annotation.SuppressLint
+import com.app.nEdge.CommonKeys.CommonKeys
 import com.app.nEdge.application.nEdgeApplication
 import com.app.nEdge.source.local.prefrance.PrefUtils
-import com.app.nEdge.utils.CommonKeys
 import com.app.nEdge.utils.Log
 import okhttp3.Interceptor
 import okhttp3.Request

@@ -68,4 +68,37 @@
         <item>Sunday</item>
 
     </array>
+    <string name="login">Login</string>
+    <string name="phone_email">Phone/Email</string>
+    <string name="firstname">firstName</string>
+    <string name="lastname">lastName</string>
+    <string name="email">Email</string>
+    <string name="signup">signUp</string>
+    <string name="require_field">require_field</string>
+    <string name="password">Password</string>
+    <string name="registration">Registration?</string>
+    <string name="name">Name</string>
+    <string name="invalid_email">Invalid Email</string>
+    <string name="phone">Phone No.</string>
+    <string name="register">Register</string>
+    <string name="iWantToLearn">I want to learn at ?</string>
+    <string name="iAmExpertAt">I am expert at ?</string>
+    <string name="levelValidation">Please select Education type</string>
+    <string name="userTypeValidation">Please select User type</string>
+    <string name="someThingWentWrong">Something went wrong</string>
+    <string name="passwordLengthValidation">Password length should be greater than 6</string>
+
+    <string-array name="userType">
+        <item>"Register as ?"</item>
+        <item>Student</item>
+        <item>Expert</item>
+    </string-array>
+
+    <string-array name="levelOptios">
+        <item>School/College</item>
+        <item>University</item>
+        <item>CSS/Professional</item>
+    </string-array>
+
+
 </resources>

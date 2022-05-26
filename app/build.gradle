@@ -7,8 +7,8 @@ apply plugin: 'com.google.gms.google-services'
 
 android {
     compileSdkVersion 32
-    ndkVersion '23.1.7779620'
-    def appVersion = '1.0.0'
+   // ndkVersion '23.1.7779620'
+    def appVersion = '1.0.1'
 
     defaultConfig {
         applicationId "com.app.nEdge"
@@ -49,16 +49,17 @@ android {
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
-
-    externalNativeBuild {
-        ndkBuild {
-            path 'src/main/jni/Android.mk'
-        }
-    }
+//
+//    externalNativeBuild {
+//        ndkBuild {
+//            path 'src/main/jni/Android.mk'
+//        }
+//    }
 }
 
 dependencies {
 
+    implementation 'com.google.firebase:firebase-auth:21.0.3'
     def dagger2Version = '2.25.2'
 
     implementation platform('com.google.firebase:firebase-bom:26.2.0')
