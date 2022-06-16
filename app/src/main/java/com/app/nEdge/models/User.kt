@@ -14,5 +14,11 @@ data class User(
     @PropertyName("userType")
     var userType: String?,
     @PropertyName("educationType")
-    var educationType: String?
+    var educationType: String?,
+    var availabiltyDays:ArrayList<String>?,
+    var availabiltyEndTime:String?,
+    var availabiltyStartTime:String?,
+    var ratePerLecture:String?,
+    var ratePerMarkingAnswer:String?
+
 )

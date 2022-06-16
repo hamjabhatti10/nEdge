@@ -6,9 +6,11 @@ import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.app.nEdge.CommonKeys.CommonKeys
+import com.app.nEdge.CommonKeys.CommonKeys.Companion.KEY_USER_TYPE
 import com.app.nEdge.R
 import com.app.nEdge.application.nEdgeApplication
 import com.app.nEdge.customData.enums.NetworkStatus
+import com.app.nEdge.customData.enums.UserType
 import com.app.nEdge.databinding.ActivityLoginBinding
 import com.app.nEdge.models.User
 import com.app.nEdge.source.local.prefrance.PrefUtils
@@ -32,8 +34,15 @@ class LoginActivity : BaseActivity() {
             this,
             ViewModelProvider.NewInstanceFactory()
         )[LoginViewModel::class.java]
+        checkSession()
         setListeners()
         setObserver()
+    }
+
+    private fun checkSession() {
+        if(nEdgeApplication.getFirebaseAuth().currentUser!=null){
+            decideMainActivity()
+        }
     }
 
     private fun setObserver() {

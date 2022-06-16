@@ -6,15 +6,24 @@ import android.text.TextUtils
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
+import com.app.nEdge.CommonKeys.CommonKeys
+import com.app.nEdge.CommonKeys.CommonKeys.Companion.KEY_DATA
 import com.app.nEdge.CommonKeys.FireBaseCommonKeys
 import com.app.nEdge.R
+import com.app.nEdge.application.nEdgeApplication
 import com.app.nEdge.constant.Constants.expertTimeFormat
 import com.app.nEdge.customData.adapter.MyAdapter
 import com.app.nEdge.customData.enums.NetworkStatus
+import com.app.nEdge.customData.enums.UserType
 import com.app.nEdge.databinding.ActivityExpertRegistrationBinding
 import com.app.nEdge.models.SubjectSpinnerModel
+import com.app.nEdge.models.User
+import com.app.nEdge.models.UserBuilder
+import com.app.nEdge.source.local.prefrance.PrefUtils
+import com.app.nEdge.ui.activities.studentMainActivity.StudentMainActivity
 import com.app.nEdge.ui.base.BaseActivity
 import com.app.nEdge.ui.customWidgets.ProgressHUD
+import com.app.nEdge.utils.ActivityUtils
 import com.app.nEdge.utils.Utilities
 import com.google.firebase.firestore.DocumentSnapshot
 import java.text.SimpleDateFormat
@@ -40,7 +49,7 @@ class ExpertRegistrationActivity : BaseActivity() {
     }
 
     private fun getDataFromBundle() {
-//        viewModel.userBuilder = intent.extras?.getSerializable(CommonKeys.KEY_DATA) as UserBuilder
+        viewModel.userBuilder = intent.getBundleExtra(KEY_DATA)?.getSerializable(KEY_DATA) as UserBuilder
     }
 
     private fun setObservers() {
@@ -66,6 +75,29 @@ class ExpertRegistrationActivity : BaseActivity() {
 
             }
         }
+        viewModel.registrationListeners.observe(this) {
+            when (it.status) {
+                NetworkStatus.LOADING -> {
+                    ProgressHUD.show(this)
+                }
+                NetworkStatus.SUCCESS -> {
+                    ProgressHUD.removeView()
+                    ActivityUtils.startNewActivity(this, ExpertRegistrationActivity::class.java)
+
+                    finish()
+                }
+                NetworkStatus.ERROR -> {
+                    ProgressHUD.removeView()
+                    Toast.makeText(this, getString(R.string.someThingWentWrong), Toast.LENGTH_SHORT)
+                        .show()
+                }
+                NetworkStatus.COMPLETED -> {
+
+                }
+
+            }
+        }
+
     }
 
     private fun createSubjectsSpinner(subjectsArray: ArrayList<String>) {
@@ -152,9 +184,19 @@ class ExpertRegistrationActivity : BaseActivity() {
         } else if (checkDayValidation()) {
             Toast.makeText(this, getString(R.string.daysValidation), Toast.LENGTH_SHORT).show()
         } else {
-            Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show()
+            viewModel.addUserDataToFirebase(createUserObject())
 
         }
+    }
+
+    private fun createUserObject(): User {
+        viewModel.userBuilder.userId=nEdgeApplication.getFirebaseAuth().currentUser?.uid
+        viewModel.userBuilder.ratePerLecture(mBinding.etRatePerLec.text.toString())
+        viewModel.userBuilder.ratePerMarkingAnswer(mBinding.etRatePerAns.text.toString())
+        viewModel.userBuilder.availabiltyDays(viewModel.selectedDaysArray)
+        viewModel.userBuilder.availabiltyStartTime(mBinding.textStartTime.text.toString())
+        viewModel.userBuilder.availabiltyEndTime(mBinding.textEndTime.text.toString())
+        return UserBuilder.build(viewModel.userBuilder)
     }
 
     private fun checkDayValidation(): Boolean {

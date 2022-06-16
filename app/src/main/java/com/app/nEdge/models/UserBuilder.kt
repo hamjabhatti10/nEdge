@@ -9,6 +9,27 @@ class UserBuilder : Serializable {
     var phoneNumber: String? = null
     var userType: String? = null
     var educationType: String? = null
+    var availabiltyDays:ArrayList<String>?= null
+    var availabiltyEndTime:String?= null
+    var availabiltyStartTime:String?= null
+    var ratePerLecture:String?= null
+    var ratePerMarkingAnswer:String?= null
+    fun availabiltyDays(availabiltyDays: ArrayList<String>?) =
+        apply {
+            this.availabiltyDays = availabiltyDays
+        } fun availabiltyEndTime(availabiltyEndTime: String?) =
+        apply {
+            this.availabiltyEndTime = availabiltyEndTime
+        } fun availabiltyStartTime(availabiltyStartTime: String?) =
+        apply {
+            this.availabiltyStartTime = availabiltyStartTime
+        } fun ratePerLecture(ratePerLecture: String?) =
+        apply {
+            this.ratePerLecture = ratePerLecture
+        } fun ratePerMarkingAnswer(ratePerMarkingAnswer: String?) =
+        apply {
+            this.ratePerMarkingAnswer = ratePerMarkingAnswer
+        }
     fun userId(userId: String?) =
         apply { this.userId = userId }
 
@@ -31,6 +52,7 @@ class UserBuilder : Serializable {
             this.educationType = educationType
         }
 
+
     companion object {
         fun build(builder: UserBuilder) = User(
             builder.userId,
@@ -38,7 +60,12 @@ class UserBuilder : Serializable {
             builder.email,
             builder.phoneNumber,
             builder.userType,
-            builder.educationType
+            builder.educationType,
+            builder.availabiltyDays,
+            builder.availabiltyEndTime,
+            builder.availabiltyStartTime,
+            builder.ratePerLecture,
+            builder.ratePerMarkingAnswer
         )
     }
 }

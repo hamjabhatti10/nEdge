@@ -49,18 +49,7 @@ class RegistrationActivity : BaseActivity() {
                 }
                 NetworkStatus.SUCCESS -> {
                     ProgressHUD.removeView()
-                    PrefUtils.setString(
-                        this, CommonKeys.KEY_USER_TYPE,
-                        viewModel.userType.toString()
-                    )
-                    if (viewModel.userType == UserType.Student)
-                        ActivityUtils.startNewActivity(this, StudentMainActivity::class.java)
-                    else {
-                        val bundle = Bundle().apply {
-                            putSerializable(CommonKeys.KEY_DATA, createUserModel())
-                        }
-                        ActivityUtils.startNewActivity(this, ExpertRegistrationActivity::class.java)
-                    }
+                    ActivityUtils.startNewActivity(this, StudentMainActivity::class.java)
                     finish()
                 }
                 NetworkStatus.ERROR -> {
@@ -158,10 +147,24 @@ class RegistrationActivity : BaseActivity() {
 
     private fun registerUser(password: String, user: UserBuilder) {
         user.email?.let {
+            ProgressHUD.show(this)
             nEdgeApplication.getFirebaseAuth().createUserWithEmailAndPassword(it, password)
                 .addOnCompleteListener { task: Task<AuthResult?> ->
                     if (task.isSuccessful) {
-                        viewModel.addUserDataToFirebase(UserBuilder.build(createUserModel()))
+                        PrefUtils.setString(
+                            this, CommonKeys.KEY_USER_TYPE,
+                            viewModel.userType.toString()
+                        )
+                        if (viewModel.userType == UserType.Student)
+                            viewModel.addUserDataToFirebase(UserBuilder.build(createUserModel()))
+                        else {
+                            ProgressHUD.removeView()
+                            val bundle = Bundle().apply {
+                                putSerializable(CommonKeys.KEY_DATA, createUserModel())
+                            }
+                            ActivityUtils.startNewActivity(this, ExpertRegistrationActivity::class.java,bundle)
+                        }
+
                     } else {
                         Toast.makeText(this, R.string.someThingWentWrong, Toast.LENGTH_SHORT).show()
                     }
