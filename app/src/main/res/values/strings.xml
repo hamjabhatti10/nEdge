@@ -73,7 +73,7 @@
     <string name="firstname">firstName</string>
     <string name="lastname">lastName</string>
     <string name="email">Email</string>
-    <string name="signup">signUp</string>
+    <string name="signup">Sign Up</string>
     <string name="require_field">require_field</string>
     <string name="password">Password</string>
     <string name="registration">Registration?</string>
@@ -81,8 +81,8 @@
     <string name="invalid_email">Invalid Email</string>
     <string name="phone">Phone No.</string>
     <string name="register">Register</string>
-    <string name="iWantToLearn">I want to learn at ?</string>
-    <string name="iAmExpertAt">I am expert at ?</string>
+    <string name="iWantToLearn">I want to learn at</string>
+    <string name="iAmExpertAt">I am expert at</string>
     <string name="levelValidation">Please select Education type</string>
     <string name="userTypeValidation">Please select User type</string>
     <string name="someThingWentWrong">Something went wrong</string>
@@ -90,6 +90,13 @@
     <string name="subject">Subject ?</string>
     <string name="subjectValidation">Please select Subject</string>
     <string name="daysValidation">Please select at least one day</string>
+    <string name="dontHaveAccount">Don\'t have account?</string>
+    <string name="back">Back</string>
+    <string name="iAmExpert">I am an expert</string>
+    <string name="school_college">School/college</string>
+    <string name="university">University</string>
+    <string name="css_professional">CSS/professional</string>
+    <string name="please_select_education_type">Please select education type</string>
 
     <string-array name="userType">
         <item>"Register as ?"</item>

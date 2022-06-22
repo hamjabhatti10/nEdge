@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.fragments.usertypeFragment.userTypeFragment">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_400dp"
+        android:layout_marginTop="@dimen/_20dp"
+        android:gravity="center"
+        android:src="@mipmap/img_register" />
+
+    <TextView
+        android:id="@+id/textStudent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/border_grey"
+        android:drawableLeft="@mipmap/ic_book"
+        android:drawablePadding="@dimen/_10dp"
+        android:gravity="center"
+        android:paddingVertical="@dimen/_8dp"
+        android:paddingLeft="@dimen/_20dp"
+        android:paddingRight="@dimen/_25dp"
+        android:text="I am a student"
+        android:textColor="@color/color_disable_button"
+        android:textSize="@dimen/_18sp" />
+
+    <TextView
+        android:id="@+id/textExpert"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/_15dp"
+        android:background="@drawable/border_grey"
+        android:drawableLeft="@mipmap/ic_star"
+        android:drawablePadding="@dimen/_10dp"
+        android:gravity="center"
+        android:paddingVertical="@dimen/_5dp"
+        android:paddingLeft="@dimen/_10dp"
+        android:paddingRight="@dimen/_25dp"
+        android:text="@string/iAmExpert"
+        android:textColor="@color/color_disable_button"
+        android:textSize="@dimen/_18sp" />
+
+</LinearLayout>

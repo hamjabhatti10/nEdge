@@ -12,5 +12,6 @@ class CommonKeys {
         const val TYPE_VIDEO = 1
         const val TYPE_PHOTO = 2
         const val KEY_USER_TYPE = "_key_user_type_"
+        const val KEY_USER_NODE = "_key_user_node"
     }
 }

@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical"
+    android:paddingHorizontal="@dimen/_15dp"
+    tools:context=".ui.activities.RegistrationActivity.RegistrationActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textUserType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_20dp"
+            android:textColor="@color/color_black"
+            android:textSize="@dimen/_14sp" />
+
+        <Button
+            android:id="@+id/btnSchoolClg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10dp"
+            android:text="@string/school_college"
+            android:textAllCaps="false"
+            android:textColor="@color/color_white" />
+
+        <Button
+            android:id="@+id/btnUniversity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10dp"
+            android:text="@string/university"
+            android:textAllCaps="false"
+            android:textColor="@color/color_white" />
+
+        <Button
+            android:id="@+id/btnCssProfessinal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10dp"
+            android:text="@string/css_professional"
+            android:textAllCaps="false"
+            android:textColor="@color/color_white" />
+
+        <LinearLayout
+            android:id="@+id/layoutExpertRegistration"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="visible">
+
+
+            <EditText
+                android:id="@+id/etRatePerAns"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_50dp"
+                android:hint="@string/rate_per_making_answer"
+                android:textColor="@color/color_black"
+                android:textColorHint="@color/color_disable_button"
+                android:inputType="number"
+                android:layout_marginTop="@dimen/_10dp"
+                android:background="@drawable/border_grey"
+                android:paddingHorizontal="@dimen/_5dp"
+                android:textSize="@dimen/_14sp" />
+
+            <EditText
+                android:id="@+id/etRatePerLec"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_50dp"
+                android:layout_marginTop="@dimen/_10dp"
+                android:hint="@string/rate_per_lecture"
+                android:textColor="@color/color_black"
+                android:textColorHint="@color/color_disable_button"
+                android:inputType="number"
+                android:background="@drawable/border_grey"
+                android:paddingHorizontal="@dimen/_5dp"
+                android:textSize="@dimen/_14sp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/start_time"
+                android:textColor="@color/color_black"
+                android:textSize="@dimen/_14sp" />
+
+            <TextView
+                android:id="@+id/textStartTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_5dp"
+                android:layout_marginLeft="@dimen/_5dp"
+                android:background="@color/color_disable_button"
+                android:padding="@dimen/_5dp"
+                android:text="2:00 PM"
+                android:textColor="@color/color_black"
+                android:textSize="@dimen/_14sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/end_time"
+                android:textColor="@color/color_black"
+                android:textSize="@dimen/_14sp" />
+
+            <TextView
+                android:id="@+id/textEndTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_5dp"
+                android:layout_marginLeft="@dimen/_5dp"
+                android:background="@color/color_disable_button"
+                android:padding="@dimen/_5dp"
+                android:text="2:00 PM"
+                android:textColor="@color/color_black"
+                android:textSize="@dimen/_14sp" />
+        </LinearLayout>
+    </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_20dp"
+                android:background="@drawable/border_grey">
+
+                <Spinner
+                    android:id="@+id/spinnerSubjects"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_50dp" />
+            </LinearLayout>
+
+
+            <Spinner
+                android:id="@+id/spinnerDays"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_30dp"
+                android:layout_marginTop="@dimen/_10dp"
+                android:entries="@array/days" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnDone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10dp"
+            android:text="@string/done"
+            android:textColor="@color/color_white" />
+    </LinearLayout>
+</ScrollView>

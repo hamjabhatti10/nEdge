@@ -25,7 +25,7 @@
 
 
         <activity
-            android:name=".ui.activities.expertRegistrationActivity.ExpertRegistrationActivity"
+            android:name=".ui.activities.RegistrationActivity.RegistrationActivity"
             android:exported="true">
 
         </activity>
@@ -34,7 +34,7 @@
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.activities.RegistrationActivtiy.RegistrationActivity"
+            android:name=".ui.activities.SignUpActivity.SignUpActivity"
             android:exported="true"
             android:screenOrientation="portrait" >
         </activity>

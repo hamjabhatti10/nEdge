@@ -15,7 +15,21 @@ open class BaseRegistrationViewModel : BaseViewModel() {
         registrationListeners.value = ApiResponse.loading()
         val userMap: Map<String, Any> = user.serializeToMap()
         val docRef = nEdgeApplication.getFirebaseFirestore().collection(FireBaseCommonKeys.KEY_USER)
+        val docId = docRef.id
         docRef.document().set(userMap).addOnCompleteListener { task1: Task<Void?>? ->
+            if (task1?.isSuccessful == true) {
+                registrationListeners.value = ApiResponse.success(docId)
+            } else {
+                registrationListeners.value = ApiResponse.error(null)
+            }
+        }
+    }
+
+    fun updateUserDataToFirebase(user: User, userNode: String) {
+        registrationListeners.value = ApiResponse.loading()
+        val userMap: Map<String, Any> = user.serializeToMap()
+        val docRef = nEdgeApplication.getFirebaseFirestore().collection(FireBaseCommonKeys.KEY_USER)
+        docRef.document(userNode).update(userMap).addOnCompleteListener { task1: Task<Void?>? ->
             if (task1?.isSuccessful == true) {
                 registrationListeners.value = ApiResponse.success(null)
             } else {
@@ -23,6 +37,5 @@ open class BaseRegistrationViewModel : BaseViewModel() {
             }
         }
     }
-
 
 }
